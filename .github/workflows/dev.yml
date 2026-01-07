@@ -1,4 +1,4 @@
-name: Deploy to EKS (Manual)
+name: Deploy to cluster(Manual)
 
 on:
   workflow_dispatch:
