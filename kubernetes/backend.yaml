@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: image: 718159740586.dkr.ecr.ap-south-1.amazonaws.com/wanderlust:backend
+          image: 718159740586.dkr.ecr.ap-south-1.amazonaws.com/wanderlust:backend
           ports:
             - containerPort: 5000
           env:
@@ -36,5 +36,4 @@ spec:
   ports:
     - port: 5000
       targetPort: 5000
-      protocol: TCP
       nodePort: 31100
