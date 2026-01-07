@@ -6,7 +6,7 @@ COPY . .
 
 RUN npm i 
 
-COPY .env.sample .env
+COPY . .
 
 EXPOSE 5000
 
