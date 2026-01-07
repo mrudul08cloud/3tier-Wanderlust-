@@ -12,13 +12,12 @@ spec:
       app: frontend
   template:
     metadata:
-      name: frontend
       labels:
         app: frontend
     spec:
       containers:
         - name: frontend
-          image: image: 718159740586.dkr.ecr.ap-south-1.amazonaws.com/wanderlust:frontend
+          image: 718159740586.dkr.ecr.ap-south-1.amazonaws.com/wanderlust:frontend
           ports:
             - containerPort: 5173
 ---
@@ -34,5 +33,4 @@ spec:
   ports:
     - port: 5173
       targetPort: 5173
-      protocol: TCP
       nodePort: 31000
