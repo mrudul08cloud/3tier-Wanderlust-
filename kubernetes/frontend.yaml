@@ -20,6 +20,9 @@ spec:
           image: 718159740586.dkr.ecr.ap-south-1.amazonaws.com/wanderlust:frontend
           ports:
             - containerPort: 5173
+          env:
+            - name: VITE_API_URL
+              value: http://backend-service:8080
 ---
 apiVersion: v1
 kind: Service
@@ -33,4 +36,4 @@ spec:
   ports:
     - port: 5173
       targetPort: 5173
-      nodePort: 31000
+      nodePort: 30173
