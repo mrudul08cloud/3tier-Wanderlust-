@@ -12,7 +12,6 @@ spec:
       app: backend
   template:
     metadata:
-      name: backend
       labels:
         app: backend
     spec:
@@ -20,7 +19,10 @@ spec:
         - name: backend
           image: 718159740586.dkr.ecr.ap-south-1.amazonaws.com/backend:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 5000
+          env:
+            - name: MONGODB_URI
+              value: mongodb://mongo-service:27017/wanderlust
 ---
 apiVersion: v1
 kind: Service
@@ -32,7 +34,7 @@ spec:
   selector:
     app: backend
   ports:
-    - port: 8080
-      targetPort: 8080
+    - port: 5000
+      targetPort: 5000
       protocol: TCP
       nodePort: 31100
