@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: 718159740586.dkr.ecr.ap-south-1.amazonaws.com/backend:latest
+          image: image: 718159740586.dkr.ecr.ap-south-1.amazonaws.com/wanderlust:frontend
           ports:
             - containerPort: 5173
 ---
