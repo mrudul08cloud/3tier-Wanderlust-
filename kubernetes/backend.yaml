@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: trainwithshubham/wanderlust-backend-beta:v2.1
+          image: 718159740586.dkr.ecr.ap-south-1.amazonaws.com/backend:latest
           ports:
             - containerPort: 8080
 ---
