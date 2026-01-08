@@ -21,8 +21,8 @@ spec:
           ports:
             - containerPort: 5000
           env:
-            - name: MONGODB_URI
-              value: mongodb://mongo-service:27017/wanderlust
+            - name: MONGO_URI
+              value: mongodb://mongo-service.wanderlust.svc.cluster.local:27017/wanderlust
 ---
 apiVersion: v1
 kind: Service
@@ -30,10 +30,9 @@ metadata:
   name: backend-service
   namespace: wanderlust
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: backend
   ports:
     - port: 5000
       targetPort: 5000
-      nodePort: 31100
