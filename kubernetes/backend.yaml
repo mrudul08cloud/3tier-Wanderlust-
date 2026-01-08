@@ -3,8 +3,6 @@ kind: Deployment
 metadata:
   name: backend-deployment
   namespace: wanderlust
-  labels:
-    app: backend
 spec:
   replicas: 1
   selector:
@@ -21,8 +19,8 @@ spec:
           ports:
             - containerPort: 5000
           env:
-            - name: MONGODB_URI
-              value: mongodb://mongo-service:27017/wanderlust
+            - name: MONGO_URI
+              value: mongodb://mongo-service.wanderlust.svc.cluster.local:27017/wanderlust
 ---
 apiVersion: v1
 kind: Service
