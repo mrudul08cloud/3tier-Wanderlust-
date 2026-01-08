@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - dev
       
 jobs:
   deploy:
@@ -30,15 +30,23 @@ jobs:
     - name: Build & Push Backend
       run: |
         docker build -t wanderlust-backend ./backend
-        docker tag wanderlust-backend:latest 718159740586.dkr.ecr.ap-south-1.amazonaws.com/wanderlust:backend
-        docker push 718159740586.dkr.ecr.ap-south-1.amazonaws.com/wanderlust:backend
+        docker tag wanderlust-backend:latest \
+          718159740586.dkr.ecr.ap-south-1.amazonaws.com/wanderlust:backend
+        docker push \
+          718159740586.dkr.ecr.ap-south-1.amazonaws.com/wanderlust:backend
 
-    # 🔹 Frontend
+    # 🔹 Frontend (FINAL FIX)
     - name: Build & Push Frontend
       run: |
-        docker build -t wanderlust-frontend ./frontend
-        docker tag wanderlust-frontend:latest 718159740586.dkr.ecr.ap-south-1.amazonaws.com/wanderlust:frontend
-        docker push 718159740586.dkr.ecr.ap-south-1.amazonaws.com/wanderlust:frontend
+        docker build \
+          --build-arg VITE_API_URL=http://13.233.91.167:31100 \
+          -t wanderlust-frontend ./frontend
+
+        docker tag wanderlust-frontend:latest \
+          718159740586.dkr.ecr.ap-south-1.amazonaws.com/wanderlust:frontend
+
+        docker push \
+          718159740586.dkr.ecr.ap-south-1.amazonaws.com/wanderlust:frontend
 
     - name: Update kubeconfig
       run: |
